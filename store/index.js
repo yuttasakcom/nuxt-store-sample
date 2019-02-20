@@ -11,9 +11,8 @@ export const state = () => ({
 });
 
 export const actions = {
-  nuxtServerInit(vuex, ctx) {
-    return axios.get("https://jsonplaceholder.typicode.com/todos").then(res => {
-      vuex.commit(`${todosModule}/${SET_TODOS}`, res.data.slice(0, 10));
-    });
+  async nuxtServerInit(vuex, ctx) {
+    const res = await axios.get("https://jsonplaceholder.typicode.com/todos");
+    vuex.dispatch(`${todosModule}/${SET_TODOS}`, res.data.slice(0, 10));
   }
 };
