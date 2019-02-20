@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <h4>Todos</h4>
-    <ul v-if="todos.todos.length > 0">
+    <ul v-if="todos.length > 0">
       <li
-        v-for="todo in todos.todos"
+        v-for="todo in todos"
         :key="todo.id"
       >{{ todo.title }}</li>
     </ul>
@@ -16,9 +16,7 @@
 import { mapState } from "vuex";
 export default {
   computed: {
-    ...mapState({
-      todos: ["todos"]
-    })
+    ...mapState("todos", ["todos"])
   },
   methods: {
     changeState() {
